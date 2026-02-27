@@ -177,11 +177,11 @@ export default function App() {
     modalBg: "#0f1320", overlay: "rgba(0,0,0,0.85)", accent: "#00ff88", accent2: "#00cfff",
     diffBg: DIFFICULTY_BG_DARK,
   } : {
-    bg: "#f0f4ff", panel: "#ffffff", border: "#e2e8f0", borderHover: "#cbd5e0",
-    text: "#1a202c", textMuted: "#718096", textSub: "#a0aec0",
-    inputBg: "#f7fafc", statCard: "#ffffff", siteCard: "#f7fafc",
-    catItem: "#f7fafc", catItemHover: "#edf2f7",
-    intensityColors: ["#edf2f7","#c6f6d5","#9ae6b4","#48bb78","#00c853"],
+    bg: "#dce3f0", panel: "#ffffff", border: "#c8d0e0", borderHover: "#a0aec0",
+    text: "#1a202c", textMuted: "#5a6a80", textSub: "#8a9ab0",
+    inputBg: "#f4f7fc", statCard: "#ffffff", siteCard: "#f4f7fc",
+    catItem: "#eef2f9", catItemHover: "#e4eaf5",
+    intensityColors: ["#d0d8e8","#c6f6d5","#9ae6b4","#48bb78","#00c853"],
     modalBg: "#ffffff", overlay: "rgba(0,0,0,0.5)", accent: "#059669", accent2: "#0284c7",
     diffBg: DIFFICULTY_BG_LIGHT,
   };
@@ -262,7 +262,7 @@ export default function App() {
 
     /* MAIN GRID */
     .main-grid { display:grid; grid-template-columns:1fr 300px; gap:16px; margin-bottom:20px; }
-    .panel { background:${T.panel}; border:1px solid ${T.border}; border-radius:14px; padding:18px; }
+    .panel { background:${T.panel}; border:1px solid ${T.border}; border-radius:14px; padding:18px; box-shadow:${isDark?"none":"0 2px 12px rgba(0,0,0,0.08)"}; }
     .panel-title { font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:${T.textMuted}; font-family:'Space Mono',monospace; margin-bottom:14px; display:flex; align-items:center; gap:6px; }
     .panel-title span { color:${T.accent}; }
     .today-date { font-size:11px; color:${T.textSub}; font-family:'Space Mono',monospace; margin-bottom:12px; }
@@ -295,7 +295,7 @@ export default function App() {
     .site-arrow { font-size:9px; color:${T.textSub}; flex-shrink:0; }
 
     /* TASKS */
-    .tasks-panel { background:${T.panel}; border:1px solid ${T.border}; border-radius:14px; padding:18px; margin-bottom:20px; }
+    .tasks-panel { background:${T.panel}; border:1px solid ${T.border}; border-radius:14px; padding:18px; margin-bottom:20px; box-shadow:${isDark?"none":"0 2px 12px rgba(0,0,0,0.08)"}; }
     .tasks-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; gap:8px; }
     .tasks-title-row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; min-width:0; }
     .tasks-title { font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:${T.textMuted}; font-family:'Space Mono',monospace; display:flex; align-items:center; gap:5px; white-space:nowrap; }
@@ -328,7 +328,7 @@ export default function App() {
     .task-empty { text-align:center; padding:30px 0; color:${T.textSub}; font-family:'Space Mono',monospace; font-size:12px; }
 
     /* HEATMAP */
-    .heatmap-panel { background:${T.panel}; border:1px solid ${T.border}; border-radius:14px; padding:18px; margin-bottom:20px; }
+    .heatmap-panel { background:${T.panel}; border:1px solid ${T.border}; border-radius:14px; padding:18px; margin-bottom:20px; box-shadow:${isDark?"none":"0 2px 12px rgba(0,0,0,0.08)"}; }
     .heatmap-scroll { overflow-x:auto; padding-bottom:6px; }
     .heatmap-body { display:flex; gap:3px; }
     .heatmap-week { display:flex; flex-direction:column; gap:3px; }
@@ -534,17 +534,25 @@ export default function App() {
           <div className="panel-title"><span>◈</span> YEARLY ACTIVITY — {new Date().getFullYear()}</div>
           <div className="heatmap-scroll">
             <div>
-              <div style={{ display:"flex", marginBottom:"5px" }}>
-                <div style={{ display:"flex", gap:"3px" }}>
-                  {heatmapWeeks.map((w, wi) => {
-                    const ml = monthLabels.find((m) => m.wi===wi);
-                    return (
-                      <div key={wi} style={{ width:"11px", flexShrink:0, position:"relative" }}>
-                        {ml && <span style={{ position:"absolute", fontSize:"9px", color:T.textMuted, fontFamily:"'Space Mono',monospace", whiteSpace:"nowrap" }}>{ml.label}</span>}
-                      </div>
-                    );
-                  })}
-                </div>
+              {/* Month labels row — fixed 18px height so labels never overlap cells */}
+              <div style={{ display:"flex", gap:"3px", height:"18px", marginBottom:"4px" }}>
+                {heatmapWeeks.map((w, wi) => {
+                  const ml = monthLabels.find((m) => m.wi === wi);
+                  return (
+                    <div key={wi} style={{ width:"11px", flexShrink:0, position:"relative" }}>
+                      {ml && (
+                        <span style={{
+                          position:"absolute", left:0, top:0,
+                          fontSize:"9px", lineHeight:"18px",
+                          color:T.textMuted,
+                          fontFamily:"'Space Mono',monospace",
+                          whiteSpace:"nowrap",
+                          pointerEvents:"none",
+                        }}>{ml.label}</span>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
               <div style={{ display:"flex", gap:"5px", alignItems:"flex-start" }}>
                 <div style={{ display:"flex", flexDirection:"column", gap:"3px" }}>
