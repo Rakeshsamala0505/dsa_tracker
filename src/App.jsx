@@ -187,10 +187,9 @@ export default function App() {
   };
 
   const css = `
-    @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;500;600;700;800&display=swap');
     *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     html { font-size:16px; }
-    body { background:${T.bg}; color:${T.text}; font-family:'Outfit',sans-serif; min-height:100vh; transition:background 0.3s,color 0.3s; -webkit-text-size-adjust:100%; }
+    body { background:${T.bg}; color:${T.text}; font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; min-height:100vh; transition:background 0.3s,color 0.3s; -webkit-text-size-adjust:100%; }
     .app { max-width:1100px; margin:0 auto; padding:16px 16px 60px; }
 
     /* HEADER */
@@ -209,14 +208,14 @@ export default function App() {
       font-weight:800;
       background:linear-gradient(135deg,${T.accent},${T.accent2});
       -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-      font-family:'Space Mono',monospace;
+      font-family:'Courier New',Courier,monospace;
       white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
     }
     .header-left p {
       font-size:clamp(9px,2vw,12px);
       color:${T.textMuted};
       margin-top:3px;
-      font-family:'Space Mono',monospace;
+      font-family:'Courier New',Courier,monospace;
       white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
     }
     .header-right { display:flex; align-items:center; gap:10px; flex-shrink:0; }
@@ -229,7 +228,7 @@ export default function App() {
     .streak-badge.pulse { animation:pulseBadge 0.5s ease; }
     @keyframes pulseBadge { 0%{transform:scale(1)} 50%{transform:scale(1.08)} 100%{transform:scale(1)} }
     .streak-flame { font-size:20px; }
-    .streak-num { font-size:clamp(16px,3.5vw,26px); font-weight:800; color:${T.accent}; font-family:'Space Mono',monospace; line-height:1; }
+    .streak-num { font-size:clamp(16px,3.5vw,26px); font-weight:800; color:${T.accent}; font-family:'Courier New',Courier,monospace; line-height:1; }
     .streak-label { font-size:9px; color:${T.textMuted}; text-transform:uppercase; letter-spacing:1px; white-space:nowrap; }
 
     /* theme toggle — always the LAST element on the right */
@@ -257,15 +256,15 @@ export default function App() {
     .stat-card:hover { border-color:${T.borderHover}; transform:translateY(-2px); }
     .stat-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:var(--accent); }
     .stat-card .s-icon { font-size:16px; margin-bottom:6px; }
-    .stat-card .s-val { font-size:clamp(16px,3vw,24px); font-weight:800; font-family:'Space Mono',monospace; color:var(--accent); line-height:1; }
+    .stat-card .s-val { font-size:clamp(16px,3vw,24px); font-weight:800; font-family:'Courier New',Courier,monospace; color:var(--accent); line-height:1; }
     .stat-card .s-label { font-size:10px; color:${T.textMuted}; margin-top:4px; text-transform:uppercase; letter-spacing:0.4px; }
 
     /* MAIN GRID */
     .main-grid { display:grid; grid-template-columns:1fr 300px; gap:16px; margin-bottom:20px; }
     .panel { background:${T.panel}; border:1px solid ${T.border}; border-radius:14px; padding:18px; box-shadow:${isDark?"none":"0 2px 12px rgba(0,0,0,0.08)"}; }
-    .panel-title { font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:${T.textMuted}; font-family:'Space Mono',monospace; margin-bottom:14px; display:flex; align-items:center; gap:6px; }
+    .panel-title { font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:${T.textMuted}; font-family:'Courier New',Courier,monospace; margin-bottom:14px; display:flex; align-items:center; gap:6px; }
     .panel-title span { color:${T.accent}; }
-    .today-date { font-size:11px; color:${T.textSub}; font-family:'Space Mono',monospace; margin-bottom:12px; }
+    .today-date { font-size:11px; color:${T.textSub}; font-family:'Courier New',Courier,monospace; margin-bottom:12px; }
 
     .cat-list { display:flex; flex-direction:column; gap:8px; }
     .cat-item { display:flex; align-items:center; gap:10px; padding:11px 13px; background:${T.catItem}; border:1px solid ${T.border}; border-radius:10px; cursor:pointer; transition:all 0.2s; user-select:none; }
@@ -275,7 +274,7 @@ export default function App() {
     .cat-item.done .cat-checkbox { background:var(--cat-color); border-color:var(--cat-color); color:#000; }
     .cat-icon { font-size:16px; flex-shrink:0; }
     .cat-name { font-size:13px; font-weight:500; flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-    .cat-total { font-size:11px; color:${T.textSub}; font-family:'Space Mono',monospace; flex-shrink:0; }
+    .cat-total { font-size:11px; color:${T.textSub}; font-family:'Courier New',Courier,monospace; flex-shrink:0; }
     .cat-item.done .cat-total { color:var(--cat-color); opacity:0.7; }
 
     .right-col { display:flex; flex-direction:column; gap:14px; }
@@ -283,14 +282,14 @@ export default function App() {
     .progress-ring-wrap { display:flex; flex-direction:column; align-items:center; padding:6px 0 12px; }
     .ring-container { position:relative; width:120px; height:120px; margin-bottom:10px; }
     .ring-center { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
-    .ring-num { font-size:28px; font-weight:800; font-family:'Space Mono',monospace; color:${T.accent}; line-height:1; }
+    .ring-num { font-size:28px; font-weight:800; font-family:'Courier New',Courier,monospace; color:${T.accent}; line-height:1; }
     .ring-sub { font-size:10px; color:${T.textMuted}; text-transform:uppercase; letter-spacing:1px; }
     .ring-label { font-size:12px; color:${T.textMuted}; text-align:center; }
 
     .sites-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:8px; }
     .site-card { display:flex; align-items:center; gap:8px; padding:10px 9px; background:${T.siteCard}; border:1px solid ${T.border}; border-radius:10px; text-decoration:none; transition:all 0.2s; overflow:hidden; }
     .site-card:hover { border-color:var(--site-color); transform:translateY(-2px); }
-    .site-icon { width:32px; height:32px; border-radius:6px; background:var(--site-bg); border:1px solid color-mix(in srgb,var(--site-color) 30%,transparent); display:flex; align-items:center; justify-content:center; font-size:8px; font-weight:800; color:var(--site-color); font-family:'Space Mono',monospace; flex-shrink:0; }
+    .site-icon { width:32px; height:32px; border-radius:6px; background:var(--site-bg); border:1px solid color-mix(in srgb,var(--site-color) 30%,transparent); display:flex; align-items:center; justify-content:center; font-size:8px; font-weight:800; color:var(--site-color); font-family:'Courier New',Courier,monospace; flex-shrink:0; }
     .site-name { font-size:11px; font-weight:600; color:${T.text}; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; flex:1; }
     .site-arrow { font-size:9px; color:${T.textSub}; flex-shrink:0; }
 
@@ -298,14 +297,14 @@ export default function App() {
     .tasks-panel { background:${T.panel}; border:1px solid ${T.border}; border-radius:14px; padding:18px; margin-bottom:20px; box-shadow:${isDark?"none":"0 2px 12px rgba(0,0,0,0.08)"}; }
     .tasks-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; gap:8px; }
     .tasks-title-row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; min-width:0; }
-    .tasks-title { font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:${T.textMuted}; font-family:'Space Mono',monospace; display:flex; align-items:center; gap:5px; white-space:nowrap; }
+    .tasks-title { font-size:11px; text-transform:uppercase; letter-spacing:1.5px; color:${T.textMuted}; font-family:'Courier New',Courier,monospace; display:flex; align-items:center; gap:5px; white-space:nowrap; }
     .tasks-title span { color:${T.accent}; }
-    .task-count-badge { padding:2px 8px; border-radius:20px; font-size:10px; font-family:'Space Mono',monospace; font-weight:700; white-space:nowrap; }
-    .add-task-btn { display:flex; align-items:center; gap:5px; padding:8px 14px; border-radius:9px; background:linear-gradient(135deg,${T.accent},${T.accent2}); border:none; color:#000; font-size:12px; font-weight:700; cursor:pointer; font-family:'Outfit',sans-serif; transition:transform 0.15s; white-space:nowrap; flex-shrink:0; }
+    .task-count-badge { padding:2px 8px; border-radius:20px; font-size:10px; font-family:'Courier New',Courier,monospace; font-weight:700; white-space:nowrap; }
+    .add-task-btn { display:flex; align-items:center; gap:5px; padding:8px 14px; border-radius:9px; background:linear-gradient(135deg,${T.accent},${T.accent2}); border:none; color:#000; font-size:12px; font-weight:700; cursor:pointer; font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; transition:transform 0.15s; white-space:nowrap; flex-shrink:0; }
     .add-task-btn:hover { transform:translateY(-1px); }
 
     .task-filters { display:flex; align-items:center; gap:5px; margin-bottom:13px; flex-wrap:wrap; }
-    .filter-btn { padding:4px 10px; border-radius:20px; font-size:11px; font-weight:500; cursor:pointer; border:1px solid ${T.border}; background:${T.catItem}; color:${T.textMuted}; font-family:'Outfit',sans-serif; transition:all 0.15s; white-space:nowrap; }
+    .filter-btn { padding:4px 10px; border-radius:20px; font-size:11px; font-weight:500; cursor:pointer; border:1px solid ${T.border}; background:${T.catItem}; color:${T.textMuted}; font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; transition:all 0.15s; white-space:nowrap; }
     .filter-btn.active { background:${T.accent}18; border-color:${T.accent}; color:${T.accent}; }
     .filter-sep { width:1px; height:14px; background:${T.border}; flex-shrink:0; }
 
@@ -319,13 +318,13 @@ export default function App() {
     .task-title-row { display:flex; align-items:center; gap:6px; flex-wrap:wrap; margin-bottom:3px; }
     .task-title { font-size:13px; font-weight:600; color:${T.text}; word-break:break-word; }
     .task-item.task-done .task-title { text-decoration:line-through; color:${T.textMuted}; }
-    .diff-badge { padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700; font-family:'Space Mono',monospace; white-space:nowrap; flex-shrink:0; }
+    .diff-badge { padding:2px 6px; border-radius:4px; font-size:10px; font-weight:700; font-family:'Courier New',Courier,monospace; white-space:nowrap; flex-shrink:0; }
     .cat-tag { padding:2px 6px; border-radius:4px; font-size:10px; background:${T.border}; color:${T.textMuted}; white-space:nowrap; flex-shrink:0; }
     .task-note { font-size:12px; color:${T.textMuted}; margin-top:2px; word-break:break-word; }
-    .task-date { font-size:10px; color:${T.textSub}; font-family:'Space Mono',monospace; margin-top:2px; }
+    .task-date { font-size:10px; color:${T.textSub}; font-family:'Courier New',Courier,monospace; margin-top:2px; }
     .task-delete { padding:3px 7px; border-radius:5px; background:transparent; border:none; color:${T.textSub}; cursor:pointer; font-size:13px; transition:color 0.15s,background 0.15s; flex-shrink:0; }
     .task-delete:hover { color:#ff6b9d; background:#ff6b9d18; }
-    .task-empty { text-align:center; padding:30px 0; color:${T.textSub}; font-family:'Space Mono',monospace; font-size:12px; }
+    .task-empty { text-align:center; padding:30px 0; color:${T.textSub}; font-family:'Courier New',Courier,monospace; font-size:12px; }
 
     /* HEATMAP */
     .heatmap-panel { background:${T.panel}; border:1px solid ${T.border}; border-radius:14px; padding:18px; margin-bottom:20px; box-shadow:${isDark?"none":"0 2px 12px rgba(0,0,0,0.08)"}; }
@@ -335,16 +334,16 @@ export default function App() {
     .heatmap-cell { width:11px; height:11px; border-radius:2px; transition:transform 0.1s; }
     .heatmap-cell:hover { transform:scale(1.5); z-index:10; }
     .heatmap-legend { display:flex; align-items:center; gap:5px; margin-top:10px; justify-content:flex-end; }
-    .legend-label { font-size:10px; color:${T.textMuted}; font-family:'Space Mono',monospace; }
+    .legend-label { font-size:10px; color:${T.textMuted}; font-family:'Courier New',Courier,monospace; }
     .legend-cell { width:11px; height:11px; border-radius:2px; }
 
     /* WEEK BARS */
     .week-bars { display:flex; flex-direction:column; gap:7px; }
     .week-day-row { display:flex; align-items:center; gap:8px; }
-    .week-day-name { font-size:11px; color:${T.textMuted}; font-family:'Space Mono',monospace; width:26px; flex-shrink:0; }
+    .week-day-name { font-size:11px; color:${T.textMuted}; font-family:'Courier New',Courier,monospace; width:26px; flex-shrink:0; }
     .week-bar-track { flex:1; height:24px; background:${T.catItem}; border-radius:6px; overflow:hidden; border:1px solid ${T.border}; min-width:0; }
-    .week-bar-fill { height:100%; border-radius:6px; display:flex; align-items:center; padding-left:8px; font-size:11px; font-weight:600; color:#000; font-family:'Space Mono',monospace; transition:width 0.6s cubic-bezier(0.4,0,0.2,1); }
-    .week-day-count { font-size:11px; color:${T.textMuted}; font-family:'Space Mono',monospace; width:14px; text-align:right; flex-shrink:0; }
+    .week-bar-fill { height:100%; border-radius:6px; display:flex; align-items:center; padding-left:8px; font-size:11px; font-weight:600; color:#000; font-family:'Courier New',Courier,monospace; transition:width 0.6s cubic-bezier(0.4,0,0.2,1); }
+    .week-day-count { font-size:11px; color:${T.textMuted}; font-family:'Courier New',Courier,monospace; width:14px; text-align:right; flex-shrink:0; }
 
     /* MODAL */
     .modal-overlay { position:fixed; inset:0; background:${T.overlay}; z-index:999; display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px); padding:16px; animation:fadeIn 0.15s; }
@@ -354,19 +353,19 @@ export default function App() {
     .modal-title { font-size:16px; font-weight:700; color:${T.text}; margin-bottom:18px; display:flex; align-items:center; gap:8px; }
     .modal-title span { color:${T.accent}; }
     .form-group { margin-bottom:13px; }
-    .form-label { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:${T.textMuted}; font-family:'Space Mono',monospace; margin-bottom:5px; display:block; }
-    .form-input { width:100%; padding:10px 12px; border-radius:9px; border:1px solid ${T.border}; background:${T.inputBg}; color:${T.text}; font-size:14px; font-family:'Outfit',sans-serif; outline:none; transition:border-color 0.2s; }
+    .form-label { font-size:11px; text-transform:uppercase; letter-spacing:1px; color:${T.textMuted}; font-family:'Courier New',Courier,monospace; margin-bottom:5px; display:block; }
+    .form-input { width:100%; padding:10px 12px; border-radius:9px; border:1px solid ${T.border}; background:${T.inputBg}; color:${T.text}; font-size:14px; font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; outline:none; transition:border-color 0.2s; }
     .form-input:focus { border-color:${T.accent}; box-shadow:0 0 0 3px ${T.accent}18; }
     .form-row { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
     .diff-select { display:flex; gap:5px; }
-    .diff-opt { flex:1; padding:8px 2px; border-radius:7px; border:1px solid ${T.border}; background:${T.inputBg}; color:${T.textMuted}; font-size:11px; font-weight:700; font-family:'Space Mono',monospace; cursor:pointer; text-align:center; transition:all 0.15s; }
+    .diff-opt { flex:1; padding:8px 2px; border-radius:7px; border:1px solid ${T.border}; background:${T.inputBg}; color:${T.textMuted}; font-size:11px; font-weight:700; font-family:'Courier New',Courier,monospace; cursor:pointer; text-align:center; transition:all 0.15s; }
     .diff-opt.sel-Easy { border-color:#00ff88; background:#00ff8818; color:#00ff88; }
     .diff-opt.sel-Medium { border-color:#ffa116; background:#ffa11618; color:#ffa116; }
     .diff-opt.sel-Hard { border-color:#ff6b9d; background:#ff6b9d18; color:#ff6b9d; }
     .modal-actions { display:flex; gap:10px; margin-top:18px; }
-    .btn-primary { flex:1; padding:11px; border-radius:9px; background:linear-gradient(135deg,${T.accent},${T.accent2}); border:none; color:#000; font-size:14px; font-weight:700; cursor:pointer; font-family:'Outfit',sans-serif; transition:transform 0.15s; }
+    .btn-primary { flex:1; padding:11px; border-radius:9px; background:linear-gradient(135deg,${T.accent},${T.accent2}); border:none; color:#000; font-size:14px; font-weight:700; cursor:pointer; font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; transition:transform 0.15s; }
     .btn-primary:hover { transform:translateY(-1px); }
-    .btn-cancel { padding:11px 16px; border-radius:9px; background:${T.catItem}; border:1px solid ${T.border}; color:${T.textMuted}; font-size:14px; cursor:pointer; font-family:'Outfit',sans-serif; }
+    .btn-cancel { padding:11px 16px; border-radius:9px; background:${T.catItem}; border:1px solid ${T.border}; color:${T.textMuted}; font-size:14px; cursor:pointer; font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
     .btn-cancel:hover { border-color:${T.borderHover}; color:${T.text}; }
 
     /* ── RESPONSIVE ── */
@@ -534,42 +533,46 @@ export default function App() {
           <div className="panel-title"><span>◈</span> YEARLY ACTIVITY — {new Date().getFullYear()}</div>
           <div className="heatmap-scroll">
             <div>
-              {/* Month labels row — fixed 18px height so labels never overlap cells */}
-              <div style={{ display:"flex", gap:"3px", height:"18px", marginBottom:"4px" }}>
-                {heatmapWeeks.map((w, wi) => {
-                  const ml = monthLabels.find((m) => m.wi === wi);
-                  return (
-                    <div key={wi} style={{ width:"11px", flexShrink:0, position:"relative" }}>
-                      {ml && (
-                        <span style={{
-                          position:"absolute", left:0, top:0,
-                          fontSize:"9px", lineHeight:"18px",
-                          color:T.textMuted,
-                          fontFamily:"'Space Mono',monospace",
-                          whiteSpace:"nowrap",
-                          pointerEvents:"none",
-                        }}>{ml.label}</span>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
               <div style={{ display:"flex", gap:"5px", alignItems:"flex-start" }}>
-                <div style={{ display:"flex", flexDirection:"column", gap:"3px" }}>
+                {/* Day-of-week labels column */}
+                <div style={{ display:"flex", flexDirection:"column", gap:"3px", marginTop:"22px" }}>
                   {["S","M","T","W","T","F","S"].map((d,i) => (
-                    <div key={i} style={{ height:"11px", fontSize:"9px", color:T.textSub, fontFamily:"'Space Mono',monospace", lineHeight:"11px" }}>{i%2===1?d:""}</div>
+                    <div key={i} style={{ height:"11px", fontSize:"9px", color:T.textSub, lineHeight:"11px" }}>{i%2===1?d:""}</div>
                   ))}
                 </div>
-                <div className="heatmap-body">
-                  {heatmapWeeks.map((w,wi) => (
-                    <div key={wi} className="heatmap-week">
-                      {w.map((d,di) => (
-                        <div key={di} className="heatmap-cell"
-                          title={d?`${d}: ${Object.values(records[d]||{}).filter(Boolean).length} categories`:""}
-                          style={{ background:d?T.intensityColors[getDayIntensity(d)]:"transparent", border:d===today()?`1px solid ${T.accent}`:"none" }} />
-                      ))}
-                    </div>
-                  ))}
+                {/* Weeks grid with month labels on top */}
+                <div>
+                  {/* Month label row — sits directly above the week columns */}
+                  <div style={{ display:"flex", gap:"3px", height:"18px", marginBottom:"4px" }}>
+                    {heatmapWeeks.map((w, wi) => {
+                      const ml = monthLabels.find((m) => m.wi === wi);
+                      return (
+                        <div key={wi} style={{ width:"11px", flexShrink:0, position:"relative" }}>
+                          {ml && (
+                            <span style={{
+                              position:"absolute", left:0, top:0,
+                              fontSize:"9px", lineHeight:"18px",
+                              color:T.textMuted,
+                              whiteSpace:"nowrap",
+                              pointerEvents:"none",
+                            }}>{ml.label}</span>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                  {/* Heatmap cells */}
+                  <div className="heatmap-body">
+                    {heatmapWeeks.map((w,wi) => (
+                      <div key={wi} className="heatmap-week">
+                        {w.map((d,di) => (
+                          <div key={di} className="heatmap-cell"
+                            title={d?`${d}: ${Object.values(records[d]||{}).filter(Boolean).length} categories`:""}
+                            style={{ background:d?T.intensityColors[getDayIntensity(d)]:"transparent" }} />
+                        ))}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
